@@ -1,0 +1,14 @@
+#
+# FC8180_DEVICE subsystem configuration
+#
+
+#menu "FC8180 support"
+
+config FC8180_ISDB_T
+	default n
+	---help---
+	  This driver implements the front-end of the Xen virtual
+	  keyboard and mouse device driver.  It communicates with a back-end
+	  in another domain.
+
+#endmenu
