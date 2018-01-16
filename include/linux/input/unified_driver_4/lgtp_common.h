@@ -135,7 +135,8 @@ enum {
 
 enum {
 	KEY_RELEASED = 0,
-	KEY_PRESSED,
+    
+	KEY_PRESSED = 1,
 	KEY_CANCELED = 0xFF,
 };
 
