@@ -1,7 +1,7 @@
 #include <linux/kernel.h>
 #include <linux/string.h>
 
-#include <asm/system_info.h>
+//#include <asm/system_info.h>
 #include <soc/qcom/lge/board_lge.h>
 #include <linux/of.h>
 #include <linux/of_fdt.h>
@@ -55,7 +55,7 @@ static int __init board_revno_setup(char *rev_info)
 	for (i = 0; i < HW_REV_MAX; i++) {
 		if (!strncmp(rev_info, rev_str[i], 7)) {
 			lge_bd_rev = i;
-			system_rev = lge_bd_rev;
+//			system_rev = lge_bd_rev;
 			break;
 		}
 	}
