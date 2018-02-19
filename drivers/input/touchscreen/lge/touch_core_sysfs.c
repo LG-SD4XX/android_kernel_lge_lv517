@@ -203,7 +203,7 @@ static ssize_t store_lpwg_notify(struct device *dev,
 	if (ts->driver->lpwg) {
 		mutex_lock(&ts->lock);
 		ts->driver->lpwg(ts->dev, code, param);
-        lpwg_status = (param[0]) ? 1 : 0; 
+        lpwg_status = (param[0]) ? 1 : 0;
 		mutex_unlock(&ts->lock);
 	}
 
