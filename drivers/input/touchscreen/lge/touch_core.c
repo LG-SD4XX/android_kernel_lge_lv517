@@ -22,6 +22,7 @@
 #include <linux/delay.h>
 #include <linux/irq.h>
 #include <linux/input/lge_touch_notify.h>
+#include <linux/input.h>
 
 /*
  *  Include to touch core Header File
@@ -412,6 +413,8 @@ static int touch_init_input(struct touch_core_data *ts)
 			ts->caps.max_id);
 	set_bit(EV_SYN, input->evbit);
 	set_bit(EV_ABS, input->evbit);
+    set_bit(EV_KEY, input->evbit);
+	set_bit(KEY_WAKEUP, input->keybit);
 	set_bit(INPUT_PROP_DIRECT, input->propbit);
 	input_set_abs_params(input, ABS_MT_POSITION_X, 0,
 			ts->caps.max_x, 0, 0);
@@ -607,6 +610,14 @@ static void touch_send_uevent(struct touch_core_data *ts, int type)
 				KOBJ_CHANGE, uevent_str[type]);
 		TOUCH_I("%s\n",  uevent_str[type][0]);
 		touch_report_all_event(ts);
+        }
+	if (type == TOUCH_UEVENT_KNOCK) {
+		input_report_key(ts->input, KEY_WAKEUP, 1);
+		TOUCH_I("Simulate power button depress");
+		input_sync(ts->input);
+		input_report_key(ts->input, KEY_WAKEUP, 0);
+		TOUCH_I("Simulate power button release");
+		input_sync(ts->input);
 	}
 }
 
