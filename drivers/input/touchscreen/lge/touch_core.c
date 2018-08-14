@@ -414,7 +414,7 @@ static int touch_init_input(struct touch_core_data *ts)
 	set_bit(EV_SYN, input->evbit);
 	set_bit(EV_ABS, input->evbit);
     set_bit(EV_KEY, input->evbit); 
-	set_bit(KEY_WAKEUP, input->evbit);
+	set_bit(KEY_WAKEUP, input->keybit);
 	set_bit(INPUT_PROP_DIRECT, input->propbit);
 	input_set_abs_params(input, ABS_MT_POSITION_X, 0,
 			ts->caps.max_x, 0, 0);
