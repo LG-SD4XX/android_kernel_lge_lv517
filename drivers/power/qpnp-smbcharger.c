@@ -2199,7 +2199,7 @@ static int smbchg_set_usb_current_max(struct smbchg_chip *chip,
 			goto high_current_set;
 		}
 #endif
-		if ((current_ma == CURRENT_500_MA) || (current_ma == CURRENT_900_MA)) {   // AP: Fast charge for USB
+		if (current_ma == CURRENT_900_MA) {
 			rc = smbchg_sec_masked_write(chip,
 					chip->usb_chgpth_base + CHGPTH_CFG,
 					CFG_USB_2_3_SEL_BIT, CFG_USB_3);
